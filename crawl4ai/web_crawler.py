@@ -140,7 +140,7 @@ class WebCrawler:
                 # if word_count_threshold < MIN_WORD_THRESHOLD:
                 #     word_count_threshold = MIN_WORD_THRESHOLD
                     
-                print('web_crawler run: comes here================{kwargs}')
+                print(f'web_crawler run: comes here================{kwargs}')
                      
                 word_count_threshold = max(word_count_threshold, 0)
 
