@@ -4,7 +4,8 @@ from dotenv import load_dotenv
 load_dotenv()  # Load environment variables from .env file
 
 # Default provider, ONLY used when the extraction strategy is LLMExtractionStrategy
-DEFAULT_PROVIDER = "openai/gpt-3.5-turbo"
+# DEFAULT_PROVIDER = "openai/gpt-4-turbo"
+DEFAULT_PROVIDER = "ollama/llama3"
 MODEL_REPO_BRANCH = "new-release-0.0.2"
 # Provider-model dictionary, ONLY used when the extraction strategy is LLMExtractionStrategy
 PROVIDER_MODELS = {
