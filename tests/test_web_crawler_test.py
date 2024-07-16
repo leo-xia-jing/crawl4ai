@@ -3,7 +3,8 @@ from crawl4ai.web_crawler import WebCrawler
 from crawl4ai.chunking_strategy import RegexChunking, FixedLengthWordChunking, SlidingWindowChunking
 from crawl4ai.extraction_strategy import CosineStrategy, LLMExtractionStrategy, TopicExtractionStrategy, NoExtractionStrategy
 
-TEST_URL = 'https://baidu.com'
+# TEST_URL = 'https://baidu.com'
+TEST_URL = "https://www.nbcnews.com/business"
 
 class TestWebCrawler(unittest.TestCase):
     
@@ -16,7 +17,7 @@ class TestWebCrawler(unittest.TestCase):
     
     def test_run_different_strategies(self):
         url = TEST_URL
-        
+
         self.crawler.warmup()
         self.assertTrue(self.crawler.ready, "WebCrawler failed to warm up")
 

@@ -176,8 +176,8 @@ class WebCrawler:
                     if screenshot:
                         screenshot_data = self.crawler_strategy.take_screenshot()
 
-                print(f"{url}")
-                print(f"{html}")
+                # print(f"{url}")
+                # print(f"{html}")
 
                 crawl_result = self.process_html(url, html, extracted_content, word_count_threshold, extraction_strategy, chunking_strategy, css_selector, screenshot_data, verbose, bool(cached), **kwargs)
                 crawl_result.success = bool(html)
@@ -218,6 +218,8 @@ class WebCrawler:
             except InvalidCSSSelectorError as e:
                 raise ValueError(str(e))
             
+            print(f"[LOG] 🚀 process_html get_content_of_website_optimized's result is {result}")
+                
             cleaned_html = result.get("cleaned_html", "")
             markdown = result.get("markdown", "")
             media = result.get("media", [])
