@@ -611,8 +611,8 @@ def perform_completion_with_backoff(provider, prompt_with_variables, api_token):
     
     for attempt in range(max_attempts):
         try:
-            # ollama model set the api_base to ai model server
-            if provider == 'ollama':
+            # ollama/llama3 model set the api_base to ai model server
+            if provider == 'ollama/llama3':
                 response =completion(
                     model=provider,
                     messages=[
@@ -705,8 +705,8 @@ def extract_blocks_batch(batch_data, provider = "groq/llama3-70b-8192", api_toke
             
         messages.append([{"role": "user", "content": prompt_with_variables}])
         
-    # ollama model set the api_base to ai model server
-    if provider == "ollama":
+    # ollama/llama3 model set the api_base to ai model server
+    if provider == "ollama/llama3":
         responses = batch_completion(
             model = provider,
             messages = messages,
