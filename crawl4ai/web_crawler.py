@@ -140,6 +140,8 @@ class WebCrawler:
                 # if word_count_threshold < MIN_WORD_THRESHOLD:
                 #     word_count_threshold = MIN_WORD_THRESHOLD
                     
+                print('comes here================')
+                     
                 word_count_threshold = max(word_count_threshold, 0)
 
                 # Check cache first
@@ -147,11 +149,14 @@ class WebCrawler:
                 screenshot_data = None
                 extracted_content = None
                 if not bypass_cache and not self.always_by_pass_cache:
+                    print('comes here================ 1')
                     cached = get_cached_url(url)
                 
                 if kwargs.get("warmup", True) and not self.ready:
+                    print('comes here================ 2')
                     return None
                 
+                print(f"cached {cached}================")
                 if cached:
                     html = cached[1]
                     extracted_content = cached[4]
@@ -171,7 +176,9 @@ class WebCrawler:
                     if screenshot:
                         screenshot_data = self.crawler_strategy.take_screenshot()
 
-                
+                print(f"{url}")
+                print(f"{html}")
+
                 crawl_result = self.process_html(url, html, extracted_content, word_count_threshold, extraction_strategy, chunking_strategy, css_selector, screenshot_data, verbose, bool(cached), **kwargs)
                 crawl_result.success = bool(html)
                 return crawl_result
