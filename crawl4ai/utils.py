@@ -608,12 +608,14 @@ def perform_completion_with_backoff(provider, prompt_with_variables, api_token):
     from litellm.exceptions import RateLimitError
     max_attempts = 3
     base_delay = 2  # Base delay in seconds, you can adjust this based on your needs
+
+    print(f"perform_completion_with_backoff's provider is {provider}")
     
     for attempt in range(max_attempts):
         try:
             # ollama/llama3 model set the api_base to ai model server
             if provider == 'ollama/llama3':
-                response =completion(
+                response = completion(
                     model=provider,
                     messages=[
                         {"role": "user", "content": prompt_with_variables}
@@ -623,7 +625,7 @@ def perform_completion_with_backoff(provider, prompt_with_variables, api_token):
                     api_base="http://192.168.129.3:11434"
                 )
             else:
-                response =completion(
+                response = completion(
                     model=provider,
                     messages=[
                         {"role": "user", "content": prompt_with_variables}
@@ -631,7 +633,8 @@ def perform_completion_with_backoff(provider, prompt_with_variables, api_token):
                     temperature=0.01,
                     api_key=api_token
                 )
-                return response  # Return the successful response
+            
+            return response  # Return the successful response
         except RateLimitError as e:
             print("Rate limit error:", str(e))
             
