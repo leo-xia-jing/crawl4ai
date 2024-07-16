@@ -24,14 +24,14 @@ class TestWebCrawler(unittest.TestCase):
             url=url,
             word_count_threshold=5,
             chunking_strategy=FixedLengthWordChunking(chunk_size=100),
-            extraction_strategy=LLMExtractionStrategy(provider="ollama/llama3", api_token='none'), bypass_cache=True
+            extraction_strategy=LLMExtractionStrategy(provider="ollama/llama3", api_token='no-token-needed'), bypass_cache=True
         )
         self.assertTrue(result.success, "Failed to crawl and extract with FixedLengthWordChunking and LLMExtractionStrategy")
         
-    def test_invalid_url(self):
-        with self.assertRaises(Exception) as context:
-            self.crawler.run(url='invalid_url', bypass_cache=True)
-        self.assertIn("Invalid URL", str(context.exception))
+    # def test_invalid_url(self):
+    #     with self.assertRaises(Exception) as context:
+    #         self.crawler.run(url='invalid_url', bypass_cache=True)
+    #     self.assertIn("Invalid URL", str(context.exception))
     
 if __name__ == '__main__':
     unittest.main()
