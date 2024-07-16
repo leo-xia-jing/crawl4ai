@@ -16,6 +16,9 @@ class TestWebCrawler(unittest.TestCase):
     
     def test_run_different_strategies(self):
         url = TEST_URL
+        
+        self.crawler.warmup()
+        self.assertTrue(self.crawler.ready, "WebCrawler failed to warm up")
 
         print(f"test_run_different_strategies's url is: {url}")
         
