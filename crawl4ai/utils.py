@@ -611,15 +611,27 @@ def perform_completion_with_backoff(provider, prompt_with_variables, api_token):
     
     for attempt in range(max_attempts):
         try:
-            response =completion(
-                model=provider,
-                messages=[
-                    {"role": "user", "content": prompt_with_variables}
-                ],
-                temperature=0.01,
-                api_key=api_token
-            )
-            return response  # Return the successful response
+            # ollama model set the api_base to ai model server
+            if provider == 'ollama':
+                response =completion(
+                    model=provider,
+                    messages=[
+                        {"role": "user", "content": prompt_with_variables}
+                    ],
+                    temperature=0.01,
+                    api_key=api_token,
+                    api_base="http://192.168.129.3:11434"
+                )
+            else:
+                response =completion(
+                    model=provider,
+                    messages=[
+                        {"role": "user", "content": prompt_with_variables}
+                    ],
+                    temperature=0.01,
+                    api_key=api_token
+                )
+                return response  # Return the successful response
         except RateLimitError as e:
             print("Rate limit error:", str(e))
             
@@ -693,12 +705,20 @@ def extract_blocks_batch(batch_data, provider = "groq/llama3-70b-8192", api_toke
             
         messages.append([{"role": "user", "content": prompt_with_variables}])
         
-    
-    responses = batch_completion(
-        model = provider,
-        messages = messages,
-        temperature = 0.01
-    )
+    # ollama model set the api_base to ai model server
+    if provider == "ollama":
+        responses = batch_completion(
+            model = provider,
+            messages = messages,
+            temperature = 0.01,
+            api_base="http://192.168.129.3:11434"
+        )
+    else:
+        responses = batch_completion(
+            model = provider,
+            messages = messages,
+            temperature = 0.01
+        )
     
     all_blocks = []
     for response in responses:    

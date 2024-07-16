@@ -168,3 +168,21 @@ Happy Crawling! 🕸️🚀
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=unclecode/crawl4ai&type=Date)](https://star-history.com/#unclecode/crawl4ai&Date)
+
+
+
+
+AI Crawler Server:
+
+ 【云服务器】请在安全组放行 11318 端口
+ 外网面板地址: https://150.129.216.194:11318/57228032
+ 内网面板地址: https://150.129.216.194:11318/57228032
+ username: z4ijqvgw
+ password: 4d6fd68b
+
+
+ openai api key
+
+ sk-proj-vrBTB7vuiBvZXh0ODafOT3BlbkFJADcAUtXIMT0czhnk7dtg
+
+ powerhander@hotmail.com
