@@ -232,6 +232,7 @@ class WebCrawler:
 
                 sections = chunking_strategy.chunk(markdown)
                 extracted_content = extraction_strategy.run(url, sections)
+                print(f"[LOG] 🔥 Extracting semantic blocks for {url}, extracted_content: {extracted_content}")
                 extracted_content = json.dumps(extracted_content, indent=4, default=str)
 
                 if verbose:
