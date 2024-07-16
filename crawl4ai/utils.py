@@ -608,9 +608,6 @@ def perform_completion_with_backoff(provider, prompt_with_variables, api_token):
     from litellm.exceptions import RateLimitError
     max_attempts = 3
     base_delay = 2  # Base delay in seconds, you can adjust this based on your needs
-
-    print(f"llm perform_completion_with_backoff's provider is {provider}")
-    print(f"llm perform_completion_with_backoff's prompt_with_variables is {prompt_with_variables}")
     
     for attempt in range(max_attempts):
         try:
@@ -634,10 +631,9 @@ def perform_completion_with_backoff(provider, prompt_with_variables, api_token):
                     temperature=0.01,
                     api_key=api_token
                 )
-            
-            # print(f"llm perform_completion_with_backoff's response is {response}")
 
             return response  # Return the successful response
+        
         except RateLimitError as e:
             print("Rate limit error:", str(e))
             

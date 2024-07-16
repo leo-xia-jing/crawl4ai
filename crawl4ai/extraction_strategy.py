@@ -109,6 +109,10 @@ class LLMExtractionStrategy(ExtractionStrategy):
                 "{" + variable + "}", variable_values[variable]
             )
         
+        if ix == 1:
+            print(f"in extraction_strategy's extract method the perform_completion_with_backoff's provider is {self.provider}")
+            print(f"in extraction_strategy's extract method the perform_completion_with_backoff's prompt_with_variables is {prompt_with_variables}")
+            
         response = perform_completion_with_backoff(self.provider, prompt_with_variables, self.api_token)
         try:
             blocks = extract_xml_data(["blocks"], response.choices[0].message.content)['blocks']
