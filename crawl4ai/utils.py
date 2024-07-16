@@ -610,6 +610,7 @@ def perform_completion_with_backoff(provider, prompt_with_variables, api_token):
     base_delay = 2  # Base delay in seconds, you can adjust this based on your needs
 
     print(f"llm perform_completion_with_backoff's provider is {provider}")
+    print(f"llm perform_completion_with_backoff's prompt_with_variables is {prompt_with_variables}")
     
     for attempt in range(max_attempts):
         try:
