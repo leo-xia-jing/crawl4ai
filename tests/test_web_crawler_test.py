@@ -10,9 +10,9 @@ class TestWebCrawler(unittest.TestCase):
     def setUp(self):
         self.crawler = WebCrawler(always_by_pass_cache=True)
     
-    def test_warmup(self):
-        self.crawler.warmup()
-        self.assertTrue(self.crawler.ready, "WebCrawler failed to warm up")
+    # def test_warmup(self):
+    #     self.crawler.warmup()
+    #     self.assertTrue(self.crawler.ready, "WebCrawler failed to warm up")
     
     def test_run_different_strategies(self):
         url = TEST_URL

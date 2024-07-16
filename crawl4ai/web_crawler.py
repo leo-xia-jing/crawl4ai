@@ -140,7 +140,7 @@ class WebCrawler:
                 # if word_count_threshold < MIN_WORD_THRESHOLD:
                 #     word_count_threshold = MIN_WORD_THRESHOLD
                     
-                print('comes here================')
+                print('web_crawler run: comes here================{kwargs}')
                      
                 word_count_threshold = max(word_count_threshold, 0)
 
@@ -149,11 +149,11 @@ class WebCrawler:
                 screenshot_data = None
                 extracted_content = None
                 if not bypass_cache and not self.always_by_pass_cache:
-                    print('comes here================ 1')
+                    print('web_crawler run: comes here================ 1')
                     cached = get_cached_url(url)
                 
                 if kwargs.get("warmup", True) and not self.ready:
-                    print('comes here================ 2')
+                    print('web_crawler run: comes here================ 2')
                     return None
                 
                 print(f"cached {cached}================")
